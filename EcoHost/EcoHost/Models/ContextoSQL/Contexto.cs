@@ -13,7 +13,7 @@ namespace EcoHost.Models.ContextoSQL
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var conexaoTexto = new Categoria().Texto();
+            var conexaoTexto = new Conexao().Texto();
             optionsBuilder.UseSqlServer(conexaoTexto);
         }
     }
