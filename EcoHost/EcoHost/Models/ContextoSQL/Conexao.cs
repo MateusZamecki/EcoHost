@@ -1,6 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace EcoHost.Models
+namespace EcoHost.Models.ContextoSQL
 {
     public class Conexao
     {
