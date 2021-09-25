@@ -11,7 +11,6 @@ namespace EcoHost.Models
         public string Estado { get; set; }
         public string Cidade { get; set; }
         public bool EhFuncionario { get; set; }
-        public int CarrinhoId { get; set; }
         public DateTime DataCadastro { get; set; }
     }
 }

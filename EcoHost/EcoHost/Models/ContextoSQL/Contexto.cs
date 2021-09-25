@@ -16,5 +16,14 @@ namespace EcoHost.Models.ContextoSQL
             var conexaoTexto = new Conexao().Texto();
             optionsBuilder.UseSqlServer(conexaoTexto);
         }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<ItemCarrinho> ItensCarrinho { get; set; }
+        public DbSet<Carrinho> Carrinhos { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
+        public DbSet<ProdutoVenda> ProdutosVenda { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<UsuarioCarrinho> UsuarioCarrinhos { get; set; }
     }
 }
