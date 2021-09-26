@@ -1,0 +1,134 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: rgb(19, 31, 53);
+}
+
+.center {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+}
+
+.barra {
+    background-color: white;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(200,200,200);
+}
+
+.logo {
+    color: #16507b;
+}
+
+    .logo h2 {
+        font-weight: normal;
+        font-size: 22px;
+    }
+
+.menu {
+    width: 80%;
+    text-align: right;
+}
+
+    .menu a {
+        color: #16507b;
+        font-size: 18px;
+        text-decoration: none;
+        margin-right: 30px;
+        transition: 0.4s;
+    }
+
+        .menu a:hover {
+            color: #007bff;
+        }
+
+
+
+        .menu .btn-menu:hover {
+            background-color: #16507b;
+            color: white;
+        }
+
+.center-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: block;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+section .main {
+    padding: 70px 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-decoration: none;
+}
+
+.main__cta {
+    width: 100%;
+    text-align: center;
+    margin: 50px 0px;
+}
+
+    .main__cta h2 {
+        color: #16507b;
+        font-size: 40px;
+    }
+
+    .main__cta p {
+        color: gray;
+        font-size: 19px;
+        margin: 10px 0;
+    }
+
+.login {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.produtos-single {
+    border-radius: 7px;
+    background-color: white;
+    width: 23%;
+    margin: 1% 1%;
+    padding: 40px 20px;
+}
+
+    .produtos-single .img {
+        color: #16507b;
+    }
+
+    .produtos-single h2 {
+        color: #16507b;
+        margin: 10px 0;
+        font-size: 20px;
+    }
+
+    .produtos-single p {
+        color: gray;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+.btn-menu {
+    background-color: #007bff;
+    display: inline-block;
+    padding: 10px 16px;
+    color: white;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    .produtos-single {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

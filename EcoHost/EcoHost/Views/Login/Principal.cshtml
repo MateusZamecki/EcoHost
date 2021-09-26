@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EcoHost.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Principal";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Viewport" content="width=device-width">
+    <link rel="stylesheet" href="~/css/PrincipalLogin.css" />
+</head>
+<body>
+    <section class="main">
+        <div class="center-body">
+            <div class="main__cta">
+                <h2>Login</h2>
+                <p>Caso não possua conta cadastre-se</p>
+                <a class="btn-menu">Cadastrar</a>
+            </div>
+            <div class="Login">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Entrar" class="btn btn-outline-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
