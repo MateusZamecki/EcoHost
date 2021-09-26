@@ -1,0 +1,25 @@
+﻿@model EcoHost.Models.Categoria
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Informações da categoria</h1>
+
+<div>
+    <hr />
+    <div class="card">
+        <div class="card-header">Categoria</div>
+        <div class="card-body row">
+            <div class="form-group col-md">
+                <label>Nome</label>
+                <input disabled class="form-control" value="@Html.DisplayFor(model => model.Nome)" />
+            </div>
+        </div>
+    </div>
+</div>
+    <br />
+        <div>
+            <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.Id">Editar categoria</a>
+            <a class="btn btn-primary" asp-action="Principal">Voltar</a>
+        </div>
