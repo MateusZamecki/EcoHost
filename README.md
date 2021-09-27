@@ -9,8 +9,11 @@ Uma loja generica online onde qualquer pessoa ou empresa pode usar cadastrando s
 Conexão com banco local, utilização de razor para comunicação das telas com os controladores, e padrão arquitetural MVC ASP.NET core
 
 URL telas do Funcionario:
+
   -> Categoria: /FuncionarioCategoria
+  
   -> Fornecedor: /FuncionarioFornecedor
+  
   -> Produtos: /
   
 URL telas do Cliente:
