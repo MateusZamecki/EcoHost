@@ -7,11 +7,12 @@
 <h1>Estoque</h1>
 
 <p>
+    <a class="btn btn-dark" asp-controller="Cliente" asp-action="PrincipalCliente">Pagina do Cliente</a>
     <a class="btn btn-primary" asp-action="Create">Novo Produto</a>
     <a class="btn btn-primary" asp-controller="FuncionarioCategoria">Categorias</a>
     <a class="btn btn-primary" asp-controller="FuncionarioFornecedor">Fornecedores</a>
 </p>
-<table id="tabelaCategoria" class="display">
+<table id="tabela" class="display">
     <thead>
         <tr>
             <th>
@@ -96,7 +97,7 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            $('#tabelaCategoria').DataTable({
+            $('#tabela').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
                 }

@@ -34,13 +34,15 @@
                     <div class="card-body row">
                         <div class="col-md">
                             <div class="form-group">
-                                <label asp-for="ValorVenda" class="control-label"></label>
-                                <input type="text" asp-for="ValorVenda" class="form-control" min="0.01" step="0.01" />
+                                <label asp-for="ValorVenda" class="control-label">Valor de Venda</label>
+                                <input type="number" asp-for="ValorVenda" placeholder="0.00" class="form-control" min="0" value="0.00" />
+                                <i>Sempre coloque dois números depois do ponto (0.00)</i>
                                 <span asp-validation-for="ValorVenda" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="CustoCompra" class="control-label"></label>
-                                <input type="text" asp-for="CustoCompra" class="form-control" min="0.01" step="0.01" />
+                                <label asp-for="CustoCompra" class="control-label">Custo da Compra</label>
+                                <input type="number" asp-for="CustoCompra" placeholder="0.00" class="form-control" min="0" value="0.00" />
+                                <i>Sempre coloque dois números depois do ponto (0.00)</i>
                                 <span asp-validation-for="CustoCompra" class="text-danger"></span>
                             </div>
                         </div>
@@ -51,7 +53,7 @@
                                 <span asp-validation-for="Quantidade" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <label asp-for="DataCriacao" class="control-label"></label>
+                                <label asp-for="DataCriacao" class="control-label">Data de Criação do Produto</label>
                                 <input asp-for="DataCriacao" class="form-control" />
                                 <span asp-validation-for="DataCriacao" class="text-danger"></span>
                             </div>
@@ -65,13 +67,13 @@
                         <div class="col-md">
                             <div class="form-group">
                                 <label class="control-label">Categoria</label>
-                                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId" name="CategoriaId"></select>
+                                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId" name="CategoriaId">Categoria</select>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-group">
                                 <label class="control-label">Fornecedor</label>
-                                <select asp-for="FornecedorId" class="form-control" asp-items="ViewBag.FornecedorId" name="FornecedorId"></select>
+                                <select asp-for="FornecedorId" class="form-control" asp-items="ViewBag.FornecedorId" name="FornecedorId">Fornecedor</select>
                             </div>
                         </div>
                     </div>

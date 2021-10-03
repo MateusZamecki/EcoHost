@@ -36,6 +36,8 @@ namespace Controle_De_Estoque.Controllers
             {
                 return RedirectToAction("Create");
             }
+            produto.CustoCompra /= 100;
+            produto.ValorVenda /= 100;
             oProdutoService.oRepositorioProduto.Incluir(produto);
             return RedirectToAction("Create");
         }
@@ -73,6 +75,8 @@ namespace Controle_De_Estoque.Controllers
             {
                 return RedirectToAction("Edit");
             }
+            produto.CustoCompra /= 100;
+            produto.ValorVenda /= 100;
             oProdutoService.oRepositorioProduto.Alterar(produto);
             return RedirectToAction("Principal");
         }
