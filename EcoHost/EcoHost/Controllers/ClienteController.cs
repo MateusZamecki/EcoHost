@@ -17,6 +17,11 @@ namespace Controle_De_Estoque.Controllers
         public IActionResult PrincipalCliente()
         {
             List<Produto> produtos = oProdutoService.oRepositorioProduto.SelecionarTodos();
+            foreach (var produto in produtos)
+            {
+                var categoria = oCategoriaService.oRepositorioCategoria.SelecionarPorId(produto.CategoriaId);
+                produto.AdicionarCategoria(categoria);
+            }
             return View(produtos);
         }
         public IActionResult AdicionarAoCarrinho()

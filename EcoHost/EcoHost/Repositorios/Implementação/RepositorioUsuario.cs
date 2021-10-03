@@ -10,5 +10,10 @@ namespace ProjetoIntegradorMVC.Models.Repositorio.Interfaces
         {
 
         }
+        public Usuario SelecionarPorEmail(string email)
+        {
+            var usuario = _contexto.Usuarios.Find(email);
+            return usuario;
+        }
     }
 }
