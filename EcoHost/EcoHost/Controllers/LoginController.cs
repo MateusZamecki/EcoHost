@@ -11,6 +11,17 @@ namespace Controle_De_Estoque.Controllers
     public class LoginController : Controller
     {
         private UsuarioService oUsuarioService = new();
+
+        public IActionResult Principal()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Principal(Usuario usuario)
+        {
+            var usuarioEhFuncionario = oUsuarioService.oRepositorioUsuario.SelecionarPorEmail(usuario.Email);
+            return RedirectToRoute("Cliente/PrincipalCliente");
+        }
         public IActionResult CreateFuncionario()
         {
             return View();
