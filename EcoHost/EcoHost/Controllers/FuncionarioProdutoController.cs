@@ -1,6 +1,7 @@
 ﻿using EcoHost.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ProjetoIntegradorMVC.Ajudantes;
 using ProjetoIntegradorMVC.Models.Repositorio;
 using System.Collections.Generic;
 
@@ -11,13 +12,14 @@ namespace Controle_De_Estoque.Controllers
         private ProdutoService oProdutoService = new();
         private CategoriaService oCategoriaService = new();
         private FornecedorService oFornecedorService = new();
+        private ConsultaPorId consulta = new();
         public IActionResult Principal()
         {
             List<Produto> produtos = oProdutoService.oRepositorioProduto.SelecionarTodos();
             foreach (var produto in produtos) 
             {
-                var categoria = oCategoriaService.oRepositorioCategoria.SelecionarPorId(produto.CategoriaId);//Rever conceitos
-                var fornecedor = oFornecedorService.oRepositorioFornecedor.SelecionarPorId(produto.FornecedorId);
+                var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
+                var fornecedor = consulta.BuscarFornecedorPorId(produto.FornecedorId);
                 produto.AdicionarCategoria(categoria);
                 produto.AdicionarFornecedor(fornecedor);
             }
@@ -50,9 +52,9 @@ namespace Controle_De_Estoque.Controllers
 
         public IActionResult Details(int id)
         {
-            var produto = oProdutoService.oRepositorioProduto.SelecionarPorId(id);
-            var categoria = oCategoriaService.oRepositorioCategoria.SelecionarPorId(produto.CategoriaId);
-            var fornecedor = oFornecedorService.oRepositorioFornecedor.SelecionarPorId(produto.CategoriaId);
+            var produto = consulta.BuscarProdutoPorId(id);
+            var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
+            var fornecedor = consulta.BuscarFornecedorPorId(produto.CategoriaId);
             produto.AdicionarCategoria(categoria);
             produto.AdicionarFornecedor(fornecedor);
             return View(produto);
@@ -61,9 +63,9 @@ namespace Controle_De_Estoque.Controllers
         {
             ViewBag.CategoriaId = PreencherSelectListComCategorias();
             ViewBag.FornecedorId = PreencherSelectListComFornecedores();
-            var produto = oProdutoService.oRepositorioProduto.SelecionarPorId(id);
-            var categoria = oCategoriaService.oRepositorioCategoria.SelecionarPorId(produto.CategoriaId);
-            var fornecedor = oFornecedorService.oRepositorioFornecedor.SelecionarPorId(produto.CategoriaId);
+            var produto = consulta.BuscarProdutoPorId(id);
+            var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
+            var fornecedor = consulta.BuscarFornecedorPorId(produto.CategoriaId);
             produto.AdicionarCategoria(categoria);
             produto.AdicionarFornecedor(fornecedor);
             return View(produto);

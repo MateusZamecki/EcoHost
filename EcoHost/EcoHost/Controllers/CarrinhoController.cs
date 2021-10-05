@@ -13,7 +13,10 @@ namespace Controle_De_Estoque.Controllers
         private FornecedorService oFornecedorService = new();
         private VendaService oVendaService = new();
         private UsuarioService oUsuarioService = new();
-
+        public IActionResult Principal()
+        {
+            return View();
+        }
         public IActionResult AdicionarProduto()
         {
             List<Produto> produtos = oProdutoService.oRepositorioProduto.SelecionarTodos();

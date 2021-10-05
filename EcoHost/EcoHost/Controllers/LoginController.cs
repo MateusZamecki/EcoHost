@@ -17,9 +17,17 @@ namespace Controle_De_Estoque.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Principal(Usuario usuario)
+        public IActionResult Principal(Usuario usuarioLogin)
         {
-            var usuarioEhFuncionario = oUsuarioService.oRepositorioUsuario.SelecionarPorEmail(usuario.Email);
+            var usuario = oUsuarioService.oRepositorioUsuario.SelecionarPorEmail(usuarioLogin.Email);
+            if(usuario == null)
+            {
+                return RedirectToRoute("Login/Principal");
+            }
+            else if (usuario.EhFuncionario)
+            {
+                return Redirect("FuncionarioProduto");
+            }
             return RedirectToRoute("Cliente/PrincipalCliente");
         }
         public IActionResult CreateFuncionario()
