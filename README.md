@@ -1,7 +1,7 @@
 # EcoHost
 Trabalho de programação web
 Projeto:
-C#, MVC ASP .Net Core, SQL para o backend
+C# feito pelo visual studio, MVC ASP .Net Core, SQL para o backend
 Razor, html e css para o frontend
 
 Uma loja generica online onde qualquer pessoa ou empresa pode usar cadastrando seus produtos, colocando descrições, preços e fornecedores que deseja.
