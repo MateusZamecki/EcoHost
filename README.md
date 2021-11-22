@@ -19,3 +19,10 @@ URL telas do Funcionario:
 URL telas do Cliente:
 
   -> Principal: /Cliente/PrincipalCliente
+
+# Metodo de instalação
+
+pelo visual studio 2019
+pacotes NuGet Microsoft.EntityFrameworkCore, Microsoft.EntityFrameworkCore.SqlServer e Microsoft.EntityFrameworkCore.Tools
+
+o restante está no git, basta puxar o repositorio e rodar
