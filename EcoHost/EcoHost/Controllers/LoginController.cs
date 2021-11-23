@@ -19,32 +19,20 @@ namespace Controle_De_Estoque.Controllers
         [HttpPost]
         public IActionResult Principal(Usuario usuarioLogin)
         {
-            var usuario = oUsuarioService.oRepositorioUsuario.SelecionarPorEmail(usuarioLogin.Email);
-            if(usuario == null)
+            var usuarios = oUsuarioService.oRepositorioUsuario.SelecionarTodos();
+            var usuarioEmail = usuarios.Find(usuario => usuario.Email.Equals(usuarioLogin.Email) && usuario.Senha.Equals(usuarioLogin.Senha));
+            if (usuarioEmail != null)
             {
-                return RedirectToRoute("Login/Principal");
+                if (usuarioEmail.EhFuncionario)
+                {
+                    return RedirectToAction("Principal", "FuncionarioProduto");
+                }
+                return RedirectToAction("Principal", "Cliente");
             }
-            else if (usuario.EhFuncionario)
+            else
             {
-                return Redirect("FuncionarioProduto");
+                return RedirectToAction("Principal");
             }
-            return RedirectToRoute("Cliente/PrincipalCliente");
-        }
-        public IActionResult CreateFuncionario()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult CreateFuncionario(Usuario usuario)
-        {
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction("CreateFuncionario");
-            }
-            usuario.DataCadastro = DateTime.UtcNow;
-            usuario.EhFuncionario = true;
-            oUsuarioService.oRepositorioUsuario.Incluir(usuario);
-            return RedirectToAction("CreateFuncionario");
         }
     }
 }

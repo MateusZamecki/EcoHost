@@ -20,17 +20,19 @@ namespace Controle_De_Estoque.Controllers
             {
                 var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
                 var fornecedor = consulta.BuscarFornecedorPorId(produto.FornecedorId);
-                produto.AdicionarCategoria(categoria);
-                produto.AdicionarFornecedor(fornecedor);
+                produto.AdicionarCategoria();
+                produto.AdicionarFornecedor();
             }
             return View(produtos);
         }
+
         public IActionResult Create()
         {
             ViewBag.CategoriaId = PreencherSelectListComCategorias();
             ViewBag.FornecedorId = PreencherSelectListComFornecedores();
             return View();
         }
+
         [HttpPost]
         public IActionResult Create(Produto produto)
         {
@@ -38,8 +40,8 @@ namespace Controle_De_Estoque.Controllers
             {
                 return RedirectToAction("Create");
             }
-            produto.CustoCompra /= 100;
-            produto.ValorVenda /= 100;
+            produto.DividirCustoDaCompraPorCem();
+            produto.DividirValorVendaPorCem();
             oProdutoService.oRepositorioProduto.Incluir(produto);
             return RedirectToAction("Create");
         }
@@ -55,8 +57,8 @@ namespace Controle_De_Estoque.Controllers
             var produto = consulta.BuscarProdutoPorId(id);
             var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
             var fornecedor = consulta.BuscarFornecedorPorId(produto.CategoriaId);
-            produto.AdicionarCategoria(categoria);
-            produto.AdicionarFornecedor(fornecedor);
+            produto.AdicionarCategoria();
+            produto.AdicionarFornecedor();
             return View(produto);
         }
         public IActionResult Edit(int id)
@@ -66,8 +68,8 @@ namespace Controle_De_Estoque.Controllers
             var produto = consulta.BuscarProdutoPorId(id);
             var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
             var fornecedor = consulta.BuscarFornecedorPorId(produto.CategoriaId);
-            produto.AdicionarCategoria(categoria);
-            produto.AdicionarFornecedor(fornecedor);
+            produto.AdicionarCategoria();
+            produto.AdicionarFornecedor();
             return View(produto);
         }
         [HttpPost]
@@ -77,8 +79,8 @@ namespace Controle_De_Estoque.Controllers
             {
                 return RedirectToAction("Edit");
             }
-            produto.CustoCompra /= 100;
-            produto.ValorVenda /= 100;
+            produto.DividirCustoDaCompraPorCem();
+            produto.DividirValorVendaPorCem();
             oProdutoService.oRepositorioProduto.Alterar(produto);
             return RedirectToAction("Principal");
         }

@@ -29,11 +29,9 @@
                 <td class="row col-md">
                     <a asp-action="Edit" class="btn btn-success m-1" asp-route-id="@item.Id">Alterar</a>
                     <a asp-action="Details" class="btn btn-primary m-1" asp-route-id="@item.Id">Detalhes</a>
-                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#DeleteModal-@item.Id">
                         Excluir
                     </button>
-                    <!-- Modal -->
                     <div class="modal fade" id="DeleteModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">

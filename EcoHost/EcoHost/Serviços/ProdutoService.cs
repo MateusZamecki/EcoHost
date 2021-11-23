@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ProjetoIntegradorMVC.Models.Repositorio
 {
-    public class ProdutoVendaService
+    public class ProdutoService
     {
-        public RepositorioProdutoVenda oRepositorioProdutoVenda { get; set; }            
-        public ProdutoVendaService()
+        public RepositorioProduto oRepositorioProduto { get; set; }            
+        public ProdutoService()
         {
-            oRepositorioProdutoVenda = new();
+            oRepositorioProduto = new RepositorioProduto();
         }
     }
 }

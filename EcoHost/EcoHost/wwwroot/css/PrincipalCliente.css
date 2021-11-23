@@ -26,34 +26,32 @@ body {
     color: #16507b;
 }
 
-    .logo h2 {
-        font-weight: normal;
-        font-size: 22px;
-    }
+.logo h2 {
+    font-weight: normal;
+    font-size: 22px;
+}
 
 .menu {
     width: 80%;
     text-align: right;
 }
 
-    .menu a {
-        color: #16507b;
-        font-size: 18px;
-        text-decoration: none;
-        margin-right: 30px;
-        transition: 0.4s;
-    }
+.menu a {
+    color: #16507b;
+    font-size: 18px;
+    text-decoration: none;
+    margin-right: 30px;
+    transition: 0.4s;
+}
 
-        .menu a:hover {
-            color: #007bff;
-        }
+.menu a:hover {
+     color: #007bff;
+}
 
-
-
-        .menu .btn-menu:hover {
-            background-color: #16507b;
-            color: white;
-        }
+.menu .btn-menu:hover {
+    background-color: #16507b;
+     color: white;
+}
 
 .center-body {
     max-width: 1100px;
@@ -78,16 +76,16 @@ section .main {
     margin: 50px 0px;
 }
 
-    .main__cta h2 {
-        color: #16507b;
-        font-size: 40px;
-    }
+.main__cta h2 {
+    color: #16507b;
+    font-size: 40px;
+}
 
-    .main__cta p {
-        color: gray;
-        font-size: 19px;
-        margin: 10px 0;
-    }
+.main__cta p {
+    color: gray;
+    font-size: 19px;
+    margin: 10px 0;
+}
 
 .produtos {
     display: flex;
@@ -131,4 +129,43 @@ section .main {
         width: 100%;
         margin-bottom: 20px;
     }
+}
+
+.botao-login-div {
+    align-items:center;
+}
+
+#botao-login {
+    width: 200px;
+}
+
+.barra-pesquisa{
+    margin-top:50px;
+    padding: 20px;
+    align-items:center;
+}
+
+.barra-pesquisa h1 {
+    margin-top: 7px;
+    color: #007bff;
+    font-size: 24px;
+}
+
+.pesquisa {
+    margin-top:7px;
+    border: 0;
+    background: white;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding:2px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 4px;
+    transition: 0.25s;
+}
+
+.pesquisa:focus {
+    width: 280px;
+    transition-delay: 0.05s;
 }
