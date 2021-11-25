@@ -22,10 +22,10 @@ namespace Controle_De_Estoque.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Create");
+                return RedirectToAction("CreateFuncionario");
             }
             oUsuarioService.oRepositorioUsuario.Incluir(usuario);
-            return RedirectToAction("Create");
+            return RedirectToAction("CreateFuncionario");
         }
 
         public IActionResult CreateCliente()
@@ -37,11 +37,11 @@ namespace Controle_De_Estoque.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Create");
+                return RedirectToAction("CreateCliente");
             }
             usuario.EhFuncionario = false;
             oUsuarioService.oRepositorioUsuario.Incluir(usuario);
-            return RedirectToAction("Create");
+            return RedirectToAction("CreateCliente");
         }
     }
 }

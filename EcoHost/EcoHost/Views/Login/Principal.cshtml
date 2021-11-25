@@ -4,64 +4,62 @@
     ViewData["Title"] = "Principal";
 }
 <br />
+<div class="card">
     <div class="card-body row">
         <div class="col-md">
             <form asp-action="Principal">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="card-body row">
-                        <div class="col-md">
-                        </div>
-                        <div class="col-md">
-                            <div class="form-group">
-                                <label asp-for="Email" class="control-label">Email</label>
-                                <input type="email" asp-for="Email" class="form-control" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-md">
+                <div class="card-body row">
+                    <div class="col-md">
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label">Email</label>
+                            <input type="email" asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
-                    <div class="card-body row">
-                        <div class="col-md">
-                        </div>
-                        <div class="col-md">
-                            <div class="form-group">
-                                <label asp-for="Senha" class="control-label">Senha</label>
-                                <input type="password" asp-for="Senha" class="form-control" />
-                                <span asp-validation-for="Senha" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-md">
+                    <div class="col-md">
+                    </div>
+                </div>
+                <div class="card-body row">
+                    <div class="col-md">
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label asp-for="Senha" class="control-label">Senha</label>
+                            <input type="password" asp-for="Senha" class="form-control" />
+                            <span asp-validation-for="Senha" class="text-danger"></span>
                         </div>
                     </div>
-                    <br />
-                    <div class="card-body row">
-                        <div class="col-md">
-                        </div>
-                        <div class="col-md">
-                        </div>
-                        <div class="col-md">
-                        </div>
-                        <div class="col-md">
-                            <div class="form-group">
-                                <input type="submit" value="Entrar" class="btn btn-outline-success" />
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div>
-                                <a class="btn btn-outline-primary" asp-controller="Cliente" asp-action="PrincipalCliente">Voltar</a>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                        </div>
-                        <div class="col-md">
-                        </div>
-                        <div class="col-md">
+                    <div class="col-md"></div>
+                </div>
+                <br />
+                <div class="card-body row">
+                    <div class="col-md">
+                    </div>
+                    <div class="col-md">
+                        <div>
+                            <a class="btn btn-outline-primary" asp-controller="Cliente" asp-action="PrincipalCliente">Voltar</a>
                         </div>
                     </div>
+                    <div class="col-md">
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <input type="submit" value="Entrar" class="btn btn-outline-success" />
+                        </div>
+                    </div>
+                    <div class="col-md">
+                    </div>
+                    <div class="col-md">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
+</div>
+<a class="btn btn-outline-secondary" asp-controller="RegistraConta" asp-action="CreateCliente">Registrar</a>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
