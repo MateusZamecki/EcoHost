@@ -1,6 +1,7 @@
 using EcoHost.Models;
 using ProjetoIntegradorMVC.Models.Repositorio.Interfaces;
 using System;
+using System.Linq;
 
 namespace ProjetoIntegradorMVC.Models.Repositorio.Interfaces
 {
@@ -12,8 +13,15 @@ namespace ProjetoIntegradorMVC.Models.Repositorio.Interfaces
         }
         public Usuario SelecionarPorEmail(string email)
         {
-            var usuario = _contexto.Usuarios.Find(email);
-            return usuario;
+            var usuarios = _contexto.Usuarios.ToList();
+            foreach(var usuario in usuarios)
+            {
+                if (usuario.Email.Equals(email))
+                {
+                    return usuario;
+                }
+            }
+            return null;
         }
     }
 }

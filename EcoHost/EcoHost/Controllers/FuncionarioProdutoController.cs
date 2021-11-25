@@ -1,6 +1,7 @@
 ﻿using EcoHost.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ProjetoIntegradorMVC.Ajudantes;
 using ProjetoIntegradorMVC.Models.Repositorio;
 using System.Collections.Generic;
 
@@ -11,24 +12,27 @@ namespace Controle_De_Estoque.Controllers
         private ProdutoService oProdutoService = new();
         private CategoriaService oCategoriaService = new();
         private FornecedorService oFornecedorService = new();
+        private ConsultaPorId consulta = new();
         public IActionResult Principal()
         {
             List<Produto> produtos = oProdutoService.oRepositorioProduto.SelecionarTodos();
             foreach (var produto in produtos) 
             {
-                var categoria = oCategoriaService.oRepositorioCategoria.SelecionarPorId(produto.CategoriaId);//Rever conceitos
-                var fornecedor = oFornecedorService.oRepositorioFornecedor.SelecionarPorId(produto.FornecedorId);
-                produto.AdicionarCategoria(categoria);
-                produto.AdicionarFornecedor(fornecedor);
+                var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
+                var fornecedor = consulta.BuscarFornecedorPorId(produto.FornecedorId);
+                produto.AdicionarCategoria();
+                produto.AdicionarFornecedor();
             }
             return View(produtos);
         }
+
         public IActionResult Create()
         {
             ViewBag.CategoriaId = PreencherSelectListComCategorias();
             ViewBag.FornecedorId = PreencherSelectListComFornecedores();
             return View();
         }
+
         [HttpPost]
         public IActionResult Create(Produto produto)
         {
@@ -36,8 +40,8 @@ namespace Controle_De_Estoque.Controllers
             {
                 return RedirectToAction("Create");
             }
-            produto.CustoCompra /= 100;
-            produto.ValorVenda /= 100;
+            produto.DividirCustoDaCompraPorCem();
+            produto.DividirValorVendaPorCem();
             oProdutoService.oRepositorioProduto.Incluir(produto);
             return RedirectToAction("Create");
         }
@@ -50,22 +54,22 @@ namespace Controle_De_Estoque.Controllers
 
         public IActionResult Details(int id)
         {
-            var produto = oProdutoService.oRepositorioProduto.SelecionarPorId(id);
-            var categoria = oCategoriaService.oRepositorioCategoria.SelecionarPorId(produto.CategoriaId);
-            var fornecedor = oFornecedorService.oRepositorioFornecedor.SelecionarPorId(produto.CategoriaId);
-            produto.AdicionarCategoria(categoria);
-            produto.AdicionarFornecedor(fornecedor);
+            var produto = consulta.BuscarProdutoPorId(id);
+            var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
+            var fornecedor = consulta.BuscarFornecedorPorId(produto.CategoriaId);
+            produto.AdicionarCategoria();
+            produto.AdicionarFornecedor();
             return View(produto);
         }
         public IActionResult Edit(int id)
         {
             ViewBag.CategoriaId = PreencherSelectListComCategorias();
             ViewBag.FornecedorId = PreencherSelectListComFornecedores();
-            var produto = oProdutoService.oRepositorioProduto.SelecionarPorId(id);
-            var categoria = oCategoriaService.oRepositorioCategoria.SelecionarPorId(produto.CategoriaId);
-            var fornecedor = oFornecedorService.oRepositorioFornecedor.SelecionarPorId(produto.CategoriaId);
-            produto.AdicionarCategoria(categoria);
-            produto.AdicionarFornecedor(fornecedor);
+            var produto = consulta.BuscarProdutoPorId(id);
+            var categoria = consulta.BuscarCategoriaPorId(produto.CategoriaId);
+            var fornecedor = consulta.BuscarFornecedorPorId(produto.CategoriaId);
+            produto.AdicionarCategoria();
+            produto.AdicionarFornecedor();
             return View(produto);
         }
         [HttpPost]
@@ -75,8 +79,8 @@ namespace Controle_De_Estoque.Controllers
             {
                 return RedirectToAction("Edit");
             }
-            produto.CustoCompra /= 100;
-            produto.ValorVenda /= 100;
+            produto.DividirCustoDaCompraPorCem();
+            produto.DividirValorVendaPorCem();
             oProdutoService.oRepositorioProduto.Alterar(produto);
             return RedirectToAction("Principal");
         }

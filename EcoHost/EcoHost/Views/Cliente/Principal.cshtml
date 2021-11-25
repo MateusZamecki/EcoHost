@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EcoHost.Models.Produto>
+
+@{
+    ViewData["Title"] = "PrincipalCliente";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="Viewport" content="width=device-width">
+    <link rel="stylesheet" href="~/css/PrincipalCliente.css" />
+</head>
+<body>
+    <section class="main">
+        <div class="center-body">
+            <div class="main__cta">
+
+                <h2>Procure pelos produtos que deseja!</h2>
+                <p>Para adquirir os produtos faça login ou cadastre-se</p>
+                <div class="botao-login-div">
+                    <a id="botao-login" class="btn btn-primary" asp-controller="Login" asp-action="Principal">Login/Cadastre-se</a>
+                </div>
+                <div class="barra-pesquisa">
+                    <form asp-controller="Cliente" asp-action="Pesquisar">
+                        <h1>Pesquise aqui!</h1>
+                        <label class="control-label"></label>
+                        <input type="text" class="pesquisa" name="pesquisa"/>
+                        <div class="form-group">
+                            <input type="submit" value="Pesquisar" class="btn btn-outline-primary" />
+                        </div>
+                    </form>                    
+                </div>
+                
+            </div>
+            <div class="produtos">
+                @foreach (var item in Model)
+                {
+                <div class="produtos-single">
+                    <h2>Nome: @item.Nome</h2>
+                    <p>Descrição: @item.Drescricao</p>
+                    <p>Categoria: @item.Categoria.Nome</p>
+                    <p>Preço: @item.ValorVenda</p>
+                    <input type="button" class="btn btn-outline-secondary" onclick="RemoverProduto()" value="-" />
+                    <input type="button" class="btn btn-outline-primary" onclick="AdicionarProduto()" value="+" />
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+</body>

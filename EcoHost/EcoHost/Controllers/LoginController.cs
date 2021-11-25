@@ -17,26 +17,22 @@ namespace Controle_De_Estoque.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Principal(Usuario usuario)
+        public IActionResult Principal(Usuario usuarioLogin)
         {
-            var usuarioEhFuncionario = oUsuarioService.oRepositorioUsuario.SelecionarPorEmail(usuario.Email);
-            return RedirectToRoute("Cliente/PrincipalCliente");
-        }
-        public IActionResult CreateFuncionario()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult CreateFuncionario(Usuario usuario)
-        {
-            if (!ModelState.IsValid)
+            var usuarios = oUsuarioService.oRepositorioUsuario.SelecionarTodos();
+            var usuarioEmail = usuarios.Find(usuario => usuario.Email.Equals(usuarioLogin.Email) && usuario.Senha.Equals(usuarioLogin.Senha));
+            if (usuarioEmail != null)
             {
-                return RedirectToAction("CreateFuncionario");
+                if (usuarioEmail.EhFuncionario)
+                {
+                    return RedirectToAction("Principal", "FuncionarioProduto");
+                }
+                return RedirectToAction("Principal", "Cliente");
             }
-            usuario.DataCadastro = DateTime.UtcNow;
-            usuario.EhFuncionario = true;
-            oUsuarioService.oRepositorioUsuario.Incluir(usuario);
-            return RedirectToAction("CreateFuncionario");
+            else
+            {
+                return RedirectToAction("Principal");
+            }
         }
     }
 }

@@ -15,9 +15,20 @@
 
                 <h2>Procure pelos produtos que deseja!</h2>
                 <p>Para adquirir os produtos faça login ou cadastre-se</p>
-                <div>
-                    <a class="btn btn-primary" asp-controller="Login" asp-action="Principal">Login/Cadastre-se</a>
+                <div class="botao-login-div">
+                    <a id="botao-login" class="btn btn-primary" asp-controller="Login" asp-action="Principal">Login/Cadastre-se</a>
                 </div>
+                <div class="barra-pesquisa">
+                    <form asp-controller="Cliente" asp-action="Pesquisar">
+                        <h1>Pesquise aqui!</h1>
+                        <label class="control-label"></label>
+                        <input type="text" class="pesquisa" name="pesquisa"/>
+                        <div class="form-group">
+                            <input type="submit" value="Pesquisar" class="btn btn-outline-primary" />
+                        </div>
+                    </form>                    
+                </div>
+                
             </div>
             <div class="produtos">
                 @foreach (var item in Model)

@@ -1,63 +1,58 @@
 ﻿@model EcoHost.Models.Usuario
 
 @{
-    ViewData["Title"] = "CreateFuncionario";
+    ViewData["Title"] = "CreateCliente";
 }
 
-<h1>Usuario</h1>
+<h1>Novo Usuario</h1>
+
 <br />
 <hr />
 <div>
-    <a class="btn btn-outline-primary" asp-controller="FuncionarioProduto" asp-action="Principal">Voltar</a>
+    <a class="btn btn-outline-primary" asp-controller="Cliente" asp-action="Principal">Voltar</a>
 </div>
 <br />
 <hr />
 <div class="card">
-    <div class="card-header">Usuario</div>
+    <div class="card-header">Informações do Usuario</div>
     <div class="card-body row">
         <div class="col-md">
-            <form asp-action="CreateFuncionario">
+            <form asp-action="CreateCliente">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <br />
                 <div class="card">
-                    <div class="card-header">Informações pessoais</div>
+
                     <div class="card-body row">
                         <div class="col-md">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label asp-for="Nome" class="control-label"></label>
                                 <input asp-for="Nome" class="form-control" />
                                 <span asp-validation-for="Nome" class="text-danger"></span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">Informações de login</div>
-                    <div class="card-body row">
-                        <div class="col-md">
                             <div class="form-group">
-                                <label asp-for="Email" class="control-label"></label>
-                                <input asp-for="Email" class="form-control" />
-                                <span asp-validation-for="Email" class="text-danger"></span>
+                                <label asp-for="DataCadastro" class="control-label"></label>
+                                <input asp-for="DataCadastro" class="form-control" />
+                                <span asp-validation-for="DataCadastro" class="text-danger"></span>
                             </div>
+                        </div>
+                        <div class="col-md">
                             <div class="form-group">
                                 <label asp-for="Senha" class="control-label"></label>
-                                <input type="text" asp-for="Senha" class="form-control" />
+                                <input asp-for="Senha" class="form-control" />
                                 <span asp-validation-for="Senha" class="text-danger"></span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">Informações de Localização</div>
-                    <div class="card-body row">
-                        <div class="col-md">
                             <div class="form-group">
                                 <label asp-for="Estado" class="control-label"></label>
-                                <input type="text" asp-for="Estado" class="form-control" min="0.01" step="0.01" />
+                                <input asp-for="Estado" class="form-control" />
                                 <span asp-validation-for="Estado" class="text-danger"></span>
                             </div>
-                        </div>
-                        <div class="col-md">
                             <div class="form-group">
                                 <label asp-for="Cidade" class="control-label"></label>
                                 <input asp-for="Cidade" class="form-control" />
@@ -77,4 +72,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 }

@@ -10,7 +10,7 @@ namespace EcoHost.Models
         public string Email { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
-        public bool EhFuncionario { get; set; }
+        public bool EhFuncionario { get; set; } = false;
         public DateTime DataCadastro { get; set; }
     }
 }
